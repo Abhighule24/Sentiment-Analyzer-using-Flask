@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>
+            Sentiment Analysis
+        </title>
+    </head>
+    <body style = "margin:0; text-align: center;">
+        <div id = "bck_div" style = "background-color: #16215e; height: auto; width: 100%; color: white; text-align: center;">
+            <p style = "width: 60%; height: 30px; margin: auto; padding: 100 0 10 0; font-size: 400%;">SENTIMENT ANALYZER</p>
+        <form action="{{ url_for('AnalyseFunction')}}"method="post">
+            <input name = "sent_text" style = "width: 60%; height: 30px; margin-top: 100; padding: 30; font-size: 150%;" placeholder="Enter Text Here"></br></br>
+            <button id = "ana_but" style = "width: 15%; height: 50px; margin-top: 20; padding: 10 30; font-size: 150%; text-align: center;">ANALYSE</button>
+        </form>
+
+        <h2 style = "padding: 10; font-size: 200%;">SCORE TABLE FOR ABOVE SENTENCE</h2>
+        <table style="width:50%; margin:auto">
+            <tr>
+              <th style = "color: white; font-size: 200%; text-align: center;">SENTIMENT METRIC</th>
+              <th style = "color: white; font-size: 200%; text-align: center;">SCORE</th> 
+            </tr>
+            <tr>
+              <td style = "color: white; font-size: 200%; text-align: center;">POSITIVE</td>
+              <td style = "color: white; font-size: 200%; text-align: center;">{{text2}}</td>
+              
+            </tr>
+            <tr>
+              <td style = "color: white; font-size: 200%; text-align: center;">NEUTRAL</td>
+              <td style = "color: white; font-size: 200%; text-align: center;">{{text3}}</td>
+              
+            </tr>
+            <tr>
+              <td style = "color: white; font-size: 200%; text-align: center;">NEGATIVE</td>
+              <td style = "color: white; font-size: 200%; text-align: center;">{{text4}}</td>
+              
+            </tr>
+            <tr>
+              <td style = "color: white; font-size: 200%; text-align: center;">COMPOUND</td>
+              <td style = "color: white; font-size: 200%; text-align: center;">{{text5}}</td>
+              
+            </tr>
+          </table>
+        </div>
+    </body>
+</html>
