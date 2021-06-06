@@ -6,6 +6,8 @@ import nltk
 from string import punctuation
 import re
 from nltk.corpus import stopwords
+nltk.download('stopwords')
+nltk.download('vader_lexicon')
 set(stopwords.words('english'))
 stop_words = stopwords.words('english')
 app = Flask(__name__)
@@ -16,12 +18,14 @@ def my_form():
 
 @app.route('/', methods =["POST"]) 
 def AnalyseFunction():
-    sentence = "happy day" #request.form.get("sent_text") 
+    sentence = request.form.get("sent_text") 
+    print(sentence)
     text2 = ''.join(c for c in sentence if not c.isdigit())
     text3 = ''.join(c for c in text2 if c not in punctuation) 
     processed_doc1 = ' '.join([word for word in text3.split(" ") if word not in stop_words])
+    print(processed_doc1)
     sa = SentimentIntensityAnalyzer()
-    score = sa.polarity_scores(text=processed_doc1)
+    score = sa.polarity_scores(text=text2)
     print(score)
     return render_template('home.html',text2=score['pos'],text3=score['neu'],text4=score['neg'],text5=score['compound'])
 
